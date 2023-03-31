@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "39784bc8-0693-4a0e-ac21-028545db5dcc",
+		"name": "invoicingservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "26511031-39784bc8-0693-4a0e-ac21-028545db5dcc"
+	},
+	"item": [
+		{
+			"name": "greetings",
+			"id": "4c2b2eff-3f60-4682-b968-cab81317a3ea",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				},
+				"description": "returns \"Greetings\"."
+			},
+			"response": []
+		},
+		{
+			"name": "find by order id",
+			"id": "ec2adca3-3b3b-4967-a515-c04cc3c4363e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/invoices/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"invoices",
+						"1"
+					]
+				},
+				"description": "returns the invoice for the sepecified order.\n\nExample response:\n\n``` json\n{\n   \"orderPlaced\":\"3/4/2023\",\n   \"total\":60.26,\n   \"invoiceItem\":[\n      {\n         \"status\": \"shipping now\",\n         \"items\":[\n            {\n               \"id\": 1,\n               \"item\":\"Tea\",\n               \"price\":24.84\n            },\n            {\n               \"id\": 2,\n               \"item\":\"Turmeric Paste\",\n               \"price\":22.99\n            }\n         ],\n         \"on\":\"3/5/2023\",\n         \"address\":{\n            \"state\":\"Indiana\",\n            \"city\":\"Bloomington\",\n            \"postalCode\":47408\n         }\n      }\n   ],\n   \"payment\":{\n      \"method\":\"Discover\",\n      \"number\":\"12345678\",\n      \"billingAddress\":{\n         \"state\":\"Indiana\",\n         \"city\":\"Bloomington\",\n         \"postalCode\":47408\n      }\n   }\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "find with invalid order id",
+			"id": "656438a2-7323-4717-96e9-aeccedb3b091",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/invoices/573",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"invoices",
+						"573"
+					]
+				},
+				"description": "returns a 404 not foundrequest with this message: \"order with this id does not exist in the system\"."
+			},
+			"response": []
+		},
+		{
+			"name": "update shipping status",
+			"id": "950b7131-c162-4a85-b999-90d6a277bef1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"itemId\": 2,\n    \"status\": \"shipping now\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/invoices/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"invoices",
+						"1"
+					]
+				},
+				"description": "updates the staus of the specified item in the specified order."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ec9218ec-db63-4be8-bed2-fd94fb75a515",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e823e263-9048-4e9a-b49c-4e4072a6fcda",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "3db3aadd-5992-417a-871f-db7cfc764c1c",
+			"key": "url",
+			"value": "localhost:8080",
+			"type": "string"
+		}
+	]
+}

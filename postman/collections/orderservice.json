@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "789f4146-b9c2-4db3-b188-284feb61e271",
+		"name": "orderservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "26511031-789f4146-b9c2-4db3-b188-284feb61e271"
+	},
+	"item": [
+		{
+			"name": "greetings",
+			"id": "5f5729e2-0818-4337-be69-5264b686f0d8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				},
+				"description": "returns \"Greetings\"."
+			},
+			"response": []
+		},
+		{
+			"name": "find by customer id",
+			"id": "88313a73-6f3b-48b3-ba71-e52186376145",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/orders/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders",
+						"1"
+					]
+				},
+				"description": "returns the list of the orders for the specified customer."
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"id": "91721822-1d75-407f-bb9b-e31211b79483",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": 1,\r\n    \"total\": 30.24,\r\n    \"shippingAddress\": {\r\n        \"state\": \"Indiana\",\r\n        \"city\": \"Bloomington\",\r\n        \"postalCode\": 47408\r\n    },\r\n    \"items\": [\r\n        {\r\n            \"name\": \"rose\",\r\n            \"quantity\": 2,\r\n            \"price\": 7\r\n        },\r\n        {\r\n            \"name\": \"sunflower\",\r\n            \"quantity\": 3,\r\n            \"price\": 5\r\n        }\r\n    ],\r\n    \"payment\": {\r\n        \"method\": \"Discover\",\r\n        \"number\": \"12345678\",\r\n        \"billingAddress\": {\r\n        \"state\": \"Indiana\",\r\n        \"city\": \"Bloomington\",\r\n        \"postalCode\": 47408\r\n    }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/orders",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders"
+					]
+				},
+				"description": "creates an order and returns its id."
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"id": "4a2cd525-63cd-400e-a2cb-02661bef6145",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": 2,\r\n    \"total\": 40.57,\r\n    \"shippingAddress\": {\r\n        \"state\": \"Indiana\",\r\n        \"city\": \"Bloomington\",\r\n        \"postalCode\": 47408\r\n    },\r\n    \"items\": [\r\n        {\r\n            \"name\": \"orchid\",\r\n            \"quantity\": 3,\r\n            \"price\": 6\r\n        },\r\n        {\r\n            \"name\": \"sunflower\",\r\n            \"quantity\": 4,\r\n            \"price\": 5\r\n        }\r\n    ],\r\n    \"payment\": {\r\n        \"method\": \"Discover\",\r\n        \"number\": \"12345678\",\r\n        \"billingAddress\": {\r\n        \"state\": \"Indiana\",\r\n        \"city\": \"Bloomington\",\r\n        \"postalCode\": 47408\r\n    }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/orders",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders"
+					]
+				},
+				"description": "creates an order and returns its id."
+			},
+			"response": []
+		},
+		{
+			"name": "create with invalid data",
+			"id": "24e8b98d-2048-4564-a208-f6a55366ca71",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": 1,\r\n    \"total\": 40.57,\r\n    \"shippingAddress\": {\r\n        \"state\": \"\",\r\n        \"city\": \"\",\r\n        \"postalCode\": 47408\r\n    },\r\n    \"items\": [\r\n        {\r\n            \"name\": \"orchid\",\r\n            \"quantity\": 3,\r\n            \"price\": 6\r\n        },\r\n        {\r\n            \"name\": \"\",\r\n            \"quantity\": 4,\r\n            \"price\": 5\r\n        }\r\n    ],\r\n    \"payment\": {\r\n        \"method\": \"Discover\",\r\n        \"number\": \"12345678\",\r\n        \"billingAddress\": {\r\n        \"state\": \"Indiana\",\r\n        \"city\": \"Bloomington\",\r\n        \"postalCode\": 47408\r\n    }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/orders",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders"
+					]
+				},
+				"description": "tries to create an order but returns an error because the data is not valid."
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"id": "590565f9-f6a2-4c21-95da-81977e8583c6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderId\": 1,\r\n    \"itemId\": 2,\r\n     \"reason\" : \"no longer needed\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/orders/return",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders",
+						"return"
+					]
+				},
+				"description": "submits a return item request for the specifed order item."
+			},
+			"response": []
+		},
+		{
+			"name": "update with invalid id",
+			"id": "3e303366-74dd-461f-bf92-08c216c5ce9d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderId\": 8970,\r\n    \"itemId\": 259,\r\n     \"reason\" : \"no longer needed\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/orders/return",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders",
+						"return"
+					]
+				},
+				"description": "returns a 400 bad request with this message: \"customer with this id does not exist in the system\" or \"order id is not valid\" or \"item id is not valid\"."
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"id": "82d26d9b-192f-40b5-b44d-40b5fd8e9035",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/orders/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders",
+						"2"
+					]
+				},
+				"description": "marks the specified order as \"cancelled\"."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "5882d807-ba12-4a75-87a5-7185c2095ecf",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c90a07a5-e835-4700-a67e-e7af0a5885c3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "bddabc21-162a-4d91-865e-74e2ba45eccb",
+			"key": "url",
+			"value": "localhost:8080",
+			"type": "string"
+		}
+	]
+}
